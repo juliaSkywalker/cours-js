@@ -101,3 +101,84 @@ for (let i = 0; i < dataImagesHtml.length; i++) {
 
     });
 }
+
+
+/*****************************************************************EXERCICE4*****************************************************************/
+
+// let btnLessMore 
+// let btnReadMore = document.getElementByAll("#services a")
+//  for (btnReadMore.addEventListener("click", function() {
+
+//          btnReadMore.src=innerHTML("Read Less") 
+//        });
+
+
+// CORRRECTION:
+
+
+//EXEMPLE 1
+// let readBaliseA = document.querySelectorAll("#services a")[0];
+// readBaliseA.addEventListener("click", function() {
+//     event.preventDefault(); //preventdefault annule l'action de la balise ex: balise A annule l'envoie vers la page
+
+//     if (readBaliseA.innerHTML == "Read More »") {
+//         readBaliseA.innerHTML = "Read Less &raquo";
+//     } else {
+//         readBaliseA.innerHTML = "Read More »"
+//     }
+
+// })
+
+//EXEMPLE 2
+let readBaliseA = document.querySelectorAll("#services a")[0];
+const textReadBaliseA = document.querySelectorAll("#services figcaption p")[0].innerHTML;
+readBaliseA.addEventListener("click", function() {
+    event.preventDefault();
+    let paragrapheRead = document.querySelectorAll("#services figcaption p")[0];
+    if (readBaliseA.innerHTML == "Read More »") {
+        paragrapheRead.innerHTML += "Que la force soit avec";
+        readBaliseA.innerHTML = "Read Less &raquo";
+    } else {
+        paragrapheRead.innerHTML = textReadBaliseA
+        readBaliseA.innerHTML = "Read More »"
+    }
+
+})
+
+
+/*****************************************************************EXERCICE 1*****************************************************************/
+let year = 2018;
+let personne = {
+    nom: "Skywalker",
+    prenom: "Anakim",
+    birthDate: "22 November 1960",
+    children: [{
+            nom: "Skywalker",
+            prenom: "Luke",
+            birthDate: "31 July 1987",
+            children: []
+        },
+        {
+            nom: "Skywalker",
+            prenom: "Leia",
+            birthDate: "17 August 1990",
+            children: []
+        },
+    ],
+
+    age: function() {
+        // year = new.date(28 - 09 - 2018)
+        // age = new.date() - this.birthDate(age)
+
+        // 2018 = new Date();
+        // birthDate = new Date(1994, 1, 19);
+        // age = 2018.getFullYear() - birhtDate.getFulllYear();
+
+
+        // CORRECTION:
+        let birth = new Date(this.birthDate)
+        return new Number((new Date().getTime() - birth.getTime()) / 31536000000).toFixed(0)
+
+    }
+
+}
